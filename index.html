@@ -47,7 +47,7 @@ button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit
 .tab[aria-selected="true"]{background:var(--teal);color:#fff;font-weight:600}
 .tabs-label{font-size:12px;color:var(--muted);margin-right:4px;align-self:center}
 
-.layout{display:grid;grid-template-columns:minmax(360px,440px) minmax(0,1fr);min-height:calc(100vh - 118px)}
+.layout{display:grid;grid-template-columns:minmax(340px,400px) minmax(0,1fr);min-height:calc(100vh - 118px)}
 .side{padding:20px 24px 48px;background:var(--paper);border-right:1px solid var(--line)}
 .step{margin-bottom:28px}
 .step-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
@@ -111,18 +111,18 @@ textarea.mono{font-size:13px}
 .privacy{font-size:12px;color:var(--sub);background:var(--peri-t);border-radius:var(--r-s);padding:10px 12px;margin-top:12px}
 
 /* ---------- preview ---------- */
-.stage{padding:20px 32px 48px;position:relative}
-.stage-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 auto 12px;max-width:760px;flex-wrap:wrap}
+.stage{padding:20px 28px 48px;position:relative}
+.stage-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 auto 12px;max-width:1120px;flex-wrap:wrap}
 .stage-bar .who{font-weight:600}
 .pager{display:flex;align-items:center;gap:6px;color:var(--sub);font-size:13px}
 .pager button{width:32px;height:32px;border-radius:var(--r-s);border:1px solid var(--line-2);background:#fff;cursor:pointer;display:grid;place-items:center;font-size:18px;line-height:1}
 .pager button:disabled{opacity:.4;cursor:default}
 .pager select{height:32px;border:1px solid var(--line-2);border-radius:var(--r-s);padding:0 8px;background:#fff}
-.sheet-wrap{max-width:760px;margin:0 auto;position:relative}
+.sheet-wrap{max-width:1120px;margin:0 auto;position:relative}
 .sheet-scale{transform-origin:top left;box-shadow:var(--shadow);border-radius:4px;overflow:hidden;width:794px}
 .empty{max-width:760px;margin:40px auto;text-align:center;color:var(--sub);padding:64px 24px;border:1.5px dashed var(--line-2);border-radius:var(--r-l);background:rgba(255,255,255,.5)}
 .empty strong{display:block;color:var(--ink);font-size:16px;margin-bottom:6px}
-.tt-actions{display:flex;gap:8px;justify-content:center;margin:0 auto 14px;max-width:760px}
+.tt-actions{display:flex;gap:8px;justify-content:center;margin:0 auto 14px;max-width:1120px}
 
 /* ---------- timetable input ---------- */
 .ttv{padding:16px 24px 48px}
@@ -147,11 +147,22 @@ table.tt .who b{display:block;font-size:13px}
 .pill{font-size:10.5px;padding:1px 6px;border-radius:999px;background:#EEF1F2;color:var(--sub);font-weight:600;white-space:nowrap}
 .pill.ok{background:var(--teal-t);color:var(--teal-d)}
 .pill.over{background:var(--red-t);color:var(--red)}
-table.tt td.c{height:46px;cursor:pointer;font-weight:700;font-size:10px;line-height:1.1;word-break:break-all;overflow:hidden;letter-spacing:-.02em}
+table.tt td.c{height:40px;cursor:pointer;font-weight:700;font-size:10.5px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:clip;letter-spacing:-.02em}
 table.tt td.c:hover{background:#F2FAFB}
 table.tt td.c.f{color:#fff}
 table.tt td.c.no{background:repeating-linear-gradient(135deg,#fff 0 4px,#C9D0D3 4px 5px);cursor:not-allowed}
 table.tt td.c.cf{box-shadow:inset 0 0 0 2px var(--red)}
+.ovall{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--sub);cursor:pointer}
+.tt-scroll.ov{touch-action:auto;user-select:text;-webkit-user-select:text}
+table.ovt .who{min-width:0}
+table.ovt td.rl{position:sticky;left:0;z-index:1;background:var(--paper);text-align:left;padding:6px 8px;border-right:2px solid var(--line-2);font-weight:700;font-size:13px;line-height:1.3}
+table.ovt td.rl small{display:block;font-size:11px;color:var(--sub);font-weight:600}
+table.ovt tr.sj td.sjh{background:#F7F9F9;text-align:left;padding:5px 8px;font-size:12px;font-weight:800;color:var(--ink);position:sticky;left:0}
+table.ovt td.oc{height:64px;vertical-align:middle;font-size:11px;line-height:1.3;padding:3px 2px;color:var(--ink);word-break:keep-all;overflow:hidden}
+table.ovt td.oc b{display:block;font-size:11.5px}
+table.ovt td.oc span{display:block;color:#3A3536}
+table.ovt td.oc.cf{box-shadow:inset 0 0 0 2px var(--red)}
+table.ovt td.oc.many{font-size:10.5px}
 .tt-warn{margin:10px 0 0;padding:0;list-style:none;font-size:13px;color:var(--red)}
 .tt-warn li{padding:2px 0}
 .pop{position:fixed;z-index:50;background:#fff;border:1px solid var(--line-2);border-radius:var(--r-m);box-shadow:var(--shadow);padding:8px;min-width:210px;font-size:13px}
@@ -216,6 +227,8 @@ table.mx tr:hover td.tn .tdel{opacity:1}
 table.mx td.tn .tdel:hover{background:var(--red-t);color:var(--red)}
 table.mx td.tn .sub-n{font-weight:500;color:var(--sub);font-size:12px}
 table.mx th.sum,table.mx td.sum{font-weight:800;color:var(--teal-d);white-space:nowrap}
+table.mx td.sum{text-align:center;vertical-align:middle;font-size:15px}
+table.mx.tv td.tn,table.mx.tv td.tc{vertical-align:middle}
 table.mx td.tc{cursor:pointer;min-width:52px;line-height:1.25}
 table.mx td.tc:hover{background:var(--teal-t)}
 table.mx td.tc.on{background:#F2FBFB}
@@ -395,7 +408,7 @@ table.mx th.colh small{display:block;font-weight:500;font-size:11px;color:var(--
 .page .ttbox ul{margin:0;padding:0;list-style:none}
 .page .ttbox li{font-size:13.5px;padding:2px 0 2px 14px;position:relative;line-height:1.5}
 .page .ttbox li::before{content:"";position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#00B2BE}
-.ttnote-edit{max-width:760px;margin:0 auto 14px}
+.ttnote-edit{max-width:1120px;margin:0 auto 14px}
 
 @media (max-width:900px){
   .layout{grid-template-columns:1fr}
@@ -532,7 +545,15 @@ table.mx th.colh small{display:block;font-weight:500;font-size:11px;color:var(--
 
 <!-- ============ ③ 시간표 입력 ============ -->
 <main class="ttv" id="vGrid" hidden>
-  <div class="tt-tools">
+  <div class="tt-tools" style="margin-bottom:10px">
+    <div class="seg" role="tablist" aria-label="시간표 보기">
+      <button type="button" data-gm="input" aria-selected="true">선생님별 입력</button>
+      <button type="button" data-gm="overview" aria-selected="false">시간대별 보기</button>
+    </div>
+    <label class="ovall" id="ovAllWrap" hidden><input type="checkbox" id="ovAll"> 모든 교과 함께 보기</label>
+    <span class="hint" id="ovHint" style="margin:0" hidden>입력한 시간표가 반·자율선택별로 모여요. 칸에 마우스를 올리면 자세히 보여요.</span>
+  </div>
+  <div class="tt-tools" id="inputTools">
     <button class="btn small on" type="button" data-tool="fill"><i data-lucide="paintbrush"></i>채우기</button>
     <button class="btn small" type="button" data-tool="erase"><i data-lucide="eraser"></i>지우개</button>
     <button class="btn small" type="button" data-tool="block"><i data-lucide="ban"></i>입력불가 칠하기</button>
@@ -541,6 +562,7 @@ table.mx th.colh small{display:block;font-weight:500;font-size:11px;color:var(--
     <div class="legend"><span><span class="sw no"></span>입력불가</span><span><span class="sw cf"></span>겹침</span></div>
   </div>
   <div class="tt-scroll" id="ttScroll"><table class="tt" id="ttTable"></table></div>
+  <div class="tt-scroll ov" id="ovScroll" hidden><table class="tt ovt" id="ovTable"></table></div>
   <div class="status" id="ttStatus"></div>
   <ul class="tt-warn" id="ttWarn"></ul>
   <div class="empty" id="emptyG" hidden><strong>먼저 ① 단계에서 배정 명단을 올려 주세요</strong>명단에 있는 선생님이 여기에 한 줄씩 나타납니다.</div>
@@ -620,7 +642,7 @@ const emptyWork = () => ({
 
 let settings = clone(DEFAULT_SETTINGS);
 let work = emptyWork();
-let subject = "수학";
+let subject = "국어";
 let view = "notice";
 let teachers = [];
 let curN = 0, curT = 0;
@@ -672,6 +694,8 @@ function banLabel(b){ return `${b.group} ${b.name}`.trim(); }
 function banShort(label){ const m = String(label||"").match(/^(.*?)\s*그룹\s*(.*)$/); return m ? (m[1] + m[2]) : String(label||"").replace(/\s+/g,""); }
 function unitKey(x){ return `${x.course}|${x.ban || ""}|${x.code}`; }
 function unitShort(key){ const [, ban, code] = key.split("|"); return ban ? `${banShort(ban)}\n${code}` : code; }
+function cellCode(key){ return key.split("|")[2] || ""; }
+function cellTitle(t, key){ const [, ban, code] = key.split("|"), x = t && t.items.find(i => unitKey(i) === key); return `${ban ? ban + " · " : ""}${code}${x ? " " + x.name : ""}`; }
 function findCourse(input){
   const n = norm(input); if (!n) return null;
   const list = settings.courses;
@@ -699,8 +723,9 @@ function splitLine(raw){
   if (cols.length === 4) cols = [cols[0], cols[1], "", cols[2], cols[3]];   // 예전 4칸 양식
   return cols;
 }
-function parseRoster(){
-  const text = work.rosters[subject] || "";
+function parseRoster(){ return parseRosterFor(subject); }
+function parseRosterFor(subj){
+  const text = work.rosters[subj] || "";
   const issues = []; const map = new Map();
   text.split(/\r?\n/).map(l => l.replace(/\u00a0/g," ")).filter(l => l.trim()).forEach((line, i) => {
     const [name, courseIn, banIn, code, hoursIn] = splitLine(line);
@@ -712,11 +737,11 @@ function parseRoster(){
     const bad = m => { issues.push(m); t.issues.push(m); };
     const course = findCourse(courseIn);
     if (!course) return bad(`${name}: 과정 "${courseIn||""}"을(를) 찾을 수 없어요.`);
-    const it = itemOf(subject, course.name, code);
+    const it = itemOf(subj, course.name, code);
     if (!it) return bad(`${name}: ${course.name}에 과목코드 "${code||""}"가 편성표에 없어요.`);
     let ban = "";
     if (it.kind === "class"){
-      const b = findBan(subject, course.name, banIn);
+      const b = findBan(subj, course.name, banIn);
       if (!b) return bad(`${name}: ${it.code} ${it.name}의 반 "${banIn||""}"이(가) 편성표에 없어요.`);
       ban = banLabel(b);
     }
@@ -832,7 +857,7 @@ function renderStage(kind){
   const t = teachers[cur];
   wrap.innerHTML = `<div class="sheet-scale">${isN ? noticeHTML(t) : ttHTML(t)}</div>`;
   const sc = wrap.firstElementChild; fitPage(sc.querySelector(".page"));
-  const k = Math.min(1, wrap.clientWidth / 794); sc.style.transform = `scale(${k})`; wrap.style.height = (1123 * k) + "px";
+  const k = Math.min(1.4, wrap.clientWidth / 794); sc.style.transform = `scale(${k})`; wrap.style.height = (1123 * k) + "px";
   let note = "";
   if (isN && t.issues.length) note = `  (확인 필요 ${t.issues.length}건)`;
   if (!isN){ const miss = t.items.filter(x => countOf(t, unitKey(x)) !== x.hours).length; if (miss) note = `  (시수와 입력 칸 수가 다른 수업 ${miss}개)`; }
@@ -865,6 +890,7 @@ function conflicts(){
   return { bad, msgs };
 }
 function renderGrid(){
+  if (gridMode === "overview"){ $("emptyG").hidden = true; $("ttScroll").hidden = true; $("ovScroll").hidden = false; renderOverview(); return; }
   const table = $("ttTable");
   $("emptyG").hidden = !!teachers.length; $("ttScroll").hidden = !teachers.length;
   if (!teachers.length){ $("ttStatus").innerHTML=""; $("ttWarn").innerHTML=""; return; }
@@ -886,7 +912,7 @@ function renderGrid(){
     const cells = DAYS.map((_, d) => Array.from({length:NP}, (_, p) => {
       const k = slotKey(d,p), v = tt[k], cls = ["c"]; if (p === NP-1) cls.push("day-end");
       if (bl.has(k)) cls.push("no"); if (v){ cls.push("f"); if (bad.has(t.name+"@"+k)) cls.push("cf"); }
-      return `<td class="${cls.join(" ")}" data-t="${ti}" data-k="${k}"${v ? ` style="background:${colorOf(t,v)}"` : ""}>${v ? esc(unitShort(v)).replace("\n","<br>") : ""}</td>`;
+      return `<td class="${cls.join(" ")}" data-t="${ti}" data-k="${k}"${v ? ` style="background:${colorOf(t,v)}" title="${esc(cellTitle(t, v))}"` : ""}>${v ? esc(cellCode(v)) : ""}</td>`;
     }).join("")).join("");
     return `<tr><td class="who"><b>${esc(t.name)}</b><div class="pills">${pills || '<span class="pill over">배정 없음</span>'}</div></td>${cells}</tr>`;
   }).join("");
@@ -898,8 +924,8 @@ function renderGrid(){
 }
 function applyCell(td, action, value){
   const t = teachers[+td.dataset.t], k = td.dataset.k, tt = ttOf(t.name), bl = blOf(t.name);
-  if (action === "fill"){ if (bl.has(k)) return; tt[k] = value; td.classList.add("f"); td.style.background = colorOf(t, value); td.innerHTML = esc(unitShort(value)).replace("\n","<br>"); }
-  else if (action === "erase"){ delete tt[k]; td.classList.remove("f","cf"); td.style.background = ""; td.textContent = ""; }
+  if (action === "fill"){ if (bl.has(k)) return; tt[k] = value; td.classList.add("f"); td.style.background = colorOf(t, value); td.textContent = cellCode(value); td.title = cellTitle(t, value); }
+  else if (action === "erase"){ delete tt[k]; td.classList.remove("f","cf"); td.style.background = ""; td.textContent = ""; td.removeAttribute("title"); }
   else if (action === "block"){ bl.add(k); setBl(t.name, bl); delete tt[k]; td.classList.add("no"); td.classList.remove("f","cf"); td.style.background=""; td.textContent=""; }
   else if (action === "unblock"){ bl.delete(k); setBl(t.name, bl); td.classList.remove("no"); }
   markDirty();
@@ -957,6 +983,70 @@ document.addEventListener("pointerup", () => { if (!drag) return; drag = null; r
 $("ttTable").addEventListener("contextmenu", e => { if (e.target.closest("td.c")) e.preventDefault(); });
 $("ttTable").addEventListener("dblclick", e => { const td = e.target.closest("td.c"); if (td && tool === "fill" && teachers[+td.dataset.t].items.length > 1) openPop(td); });
 document.querySelectorAll("[data-tool]").forEach(b => b.addEventListener("click", () => { tool = b.dataset.tool; document.querySelectorAll("[data-tool]").forEach(x => x.classList.toggle("on", x === b)); }));
+
+/* ---------- ③ 시간대별 보기 (요일 × 교시에 어떤 수업이 있는지) ---------- */
+let gridMode = "input", ovAll = false;
+const PASTEL = ["#FFE9A8","#CFE8F5","#F9D3D3","#D9EFC7","#E6DDF5","#FFD8B5","#CDEFEA","#F2E2C4"];
+function renderOverview(){
+  const subs = ovAll ? SUBJECTS : [subject];
+  const rows = [];   // { sj, label, small, key, cells: { slot: [entries] } }
+  subs.forEach((s, si) => {
+    const sj = settings.subjects[s], list = parseRosterFor(s).list, tt = work.timetable[s] || {};
+    const mine = [];
+    settings.courses.forEach(co => {
+      sj.bans.filter(b => b.course === co.name).forEach(b => mine.push({ sj: s, label: b.name, small: `${b.group}${settings.courses.length > 1 ? " · " + co.name : ""}`, key: `${co.name}|${banLabel(b)}`, cells: {} }));
+      const bundles = [...new Set(sj.items.filter(i => i.course === co.name && i.kind === "free").map(i => i.bundle || i.code))];
+      bundles.forEach(bn => mine.push({ sj: s, label: bn, small: `자율선택${settings.courses.length > 1 ? " · " + co.name : ""}`, key: `${co.name}|F:${bn}`, cells: {} }));
+    });
+    const find = key => mine.find(r => r.key === key);
+    list.forEach(t => Object.entries(tt[t.name] || {}).forEach(([slot, v]) => {
+      const [course, ban, code] = v.split("|"), x = t.items.find(i => unitKey(i) === v);
+      const row = ban ? find(`${course}|${ban}`) : find(`${course}|F:${(x && (x.bundle || x.code)) || code}`);
+      if (!row) return;
+      const idx = sj.items.findIndex(i => i.course === course && i.code === code);
+      (row.cells[slot] ||= []).push({ code, name: x ? x.name : "", teacher: t.name, color: ovAll ? PASTEL[si % PASTEL.length] : PASTEL[(idx < 0 ? 0 : idx) % PASTEL.length] });
+    }));
+    rows.push(...mine.map(r => ({ ...r, si })));
+  });
+  const head1 = `<tr><th class="who" rowspan="2" style="min-width:110px">${ovAll ? "교과 · 반" : "반"}</th>${DAYS.map(d => `<th colspan="${NP}" class="day-end">${d}</th>`).join("")}</tr>`;
+  const head2 = `<tr>${DAYS.map(() => Array.from({length:NP}, (_,p) => `<th class="${p===NP-1?"day-end":""}">${p+1}</th>`).join("")).join("")}</tr>`;
+  const sig = list => (list || []).map(e => e.code + "/" + e.teacher).sort().join(",");
+  let body = "", lastSj = null, conflicts = 0;
+  rows.forEach(r => {
+    if (ovAll && r.sj !== lastSj){ body += `<tr class="sj"><td class="sjh" colspan="${1 + DAYS.length * NP}">${esc(r.sj)}</td></tr>`; lastSj = r.sj; }
+    let html = `<td class="rl"><small>${esc(r.small)}</small>${esc(r.label)}</td>`;
+    DAYS.forEach((d, di) => {
+      for (let p = 0; p < NP; p++){
+        const k = slotKey(di, p), list = r.cells[k];
+        let n = 1; if (list) while (p + n < NP && sig(r.cells[slotKey(di, p + n)]) === sig(list)) n++;
+        const endCls = (p + n - 1 === NP - 1) ? " day-end" : "";
+        if (!list){ html += `<td class="oc${endCls}"></td>`; continue; }
+        const byCode = {}; list.forEach(e => (byCode[e.code + "|" + e.name] ||= { ...e, teachers: [] }).teachers.push(e.teacher));
+        const groups = Object.values(byCode), cf = groups.length > 1;
+        if (cf) conflicts++;
+        const title = groups.map(g => `${g.code} ${g.name} — ${g.teachers.join(", ")}`).join("\n");
+        const bg = groups[0].color;
+        html += `<td class="oc${endCls}${cf ? " cf" : ""}${list.length > 2 ? " many" : ""}" colspan="${n}" style="background:${bg}" title="${esc(title)}">${groups.map(g => `<b>${esc(g.code)}${n > 1 && g.name ? " " + esc(g.name) : ""}</b><span>${esc(g.teachers.join(" "))}</span>`).join("")}</td>`;
+        p += n - 1;
+      }
+    });
+    body += `<tr>${html}</tr>`;
+  });
+  if (!rows.length) body = `<tr><td class="rl" colspan="${1 + DAYS.length * NP}" style="padding:24px;color:var(--sub);font-weight:500">${ovAll ? "편성된 반이 없어요." : esc(subject) + "에 반·자율선택 칸이 없어요. ② 배정 현황에서 '+ 칸 추가'로 만들어 주세요."}</td></tr>`;
+  $("ovTable").innerHTML = `<colgroup><col style="width:120px">${'<col>'.repeat(DAYS.length*NP)}</colgroup><thead>${head1}${head2}</thead><tbody>${body}</tbody>`;
+  $("ttStatus").innerHTML = rows.length ? `<span class="chip plain">${ovAll ? "모든 교과" : esc(subject)} · ${rows.length}줄</span>` + (conflicts ? `<span class="chip warn">같은 반·같은 시간 겹침 ${conflicts}곳 (빨간 테두리)</span>` : "") : "";
+  $("ttWarn").innerHTML = "";
+}
+function setGridMode(m){
+  gridMode = m;
+  document.querySelectorAll("[data-gm]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.gm === m)));
+  const ov = m === "overview";
+  $("inputTools").hidden = ov; $("ovAllWrap").hidden = !ov; $("ovHint").hidden = !ov;
+  $("ttScroll").hidden = ov || !teachers.length; $("ovScroll").hidden = !ov;
+  closePop(); renderGrid();
+}
+document.querySelectorAll("[data-gm]").forEach(b => b.addEventListener("click", () => setGridMode(b.dataset.gm)));
+$("ovAll").addEventListener("change", e => { ovAll = e.target.checked; renderGrid(); });
 
 /* ---------- 명단 글자 다시 쓰기 (현황에서 고칠 때) ---------- */
 function rosterRows(){

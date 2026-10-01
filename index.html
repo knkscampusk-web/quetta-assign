@@ -147,6 +147,7 @@ table.tt .who b{display:block;font-size:13px}
 .pill{font-size:10.5px;padding:1px 6px;border-radius:999px;background:#EEF1F2;color:var(--sub);font-weight:600;white-space:nowrap}
 .pill.ok{background:var(--teal-t);color:var(--teal-d)}
 .pill.over{background:var(--red-t);color:var(--red)}
+.pill .pdot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px;vertical-align:1px}
 table.tt td.c{height:40px;cursor:pointer;font-weight:700;font-size:10.5px;line-height:1.1;white-space:nowrap;overflow:hidden;text-overflow:clip;letter-spacing:-.02em}
 table.tt td.c:hover{background:#F2FAFB}
 table.tt td.c.f{color:#fff}
@@ -399,6 +400,7 @@ table.mx th.colh small{display:block;font-weight:500;font-size:11px;color:var(--
 .page .mine span{display:inline-flex;align-items:center;gap:8px;border:1.5px solid #00B2BE;border-radius:10px;padding:7px 12px;font-size:14.5px;font-weight:700}
 .page .mine span i{font-style:normal;display:inline-block;width:12px;height:12px;border-radius:3px}
 .page .mine span em{font-style:normal;font-weight:500;color:#5E5E60;font-size:13px}
+.page .mine span .cb{font-size:13px;font-weight:600;color:#007C85;background:#E0F6F7;border-radius:6px;padding:1px 7px}
 .page table.week{width:100%;border-collapse:separate;border-spacing:4px;table-layout:fixed}
 .page table.week th{font-size:14px;font-weight:800;padding:4px 0 6px}
 .page table.week th.p{width:92px}
@@ -841,7 +843,7 @@ function colorOf(t, key){ const i = t.items.findIndex(x => unitKey(x) === key); 
 function ttHTML(t){
   const c = settings.common, tt = ttOf(t.name);
   const byKey = Object.fromEntries(t.items.map(x => [unitKey(x), x]));
-  const chips = t.items.map(x => `<span><i style="background:${colorOf(t,unitKey(x))}"></i>${x.ban ? esc(x.ban) + " · " : ""}${esc(x.code)} ${esc(x.name)}<em>주 ${esc(x.hours)}시간</em></span>`).join("")
+  const chips = t.items.map(x => `<span><i style="background:${colorOf(t,unitKey(x))}"></i>${esc(x.code)} ${esc(x.name)}${x.ban ? `<small class="cb">${esc(x.ban)}</small>` : (x.kind === "free" ? `<small class="cb">자율선택</small>` : "")}<em>주 ${esc(x.hours)}시간</em></span>`).join("")
     || `<span style="border-color:#C0392B;color:#C0392B">배정된 수업이 없어요</span>`;
   const skip = new Set(); const span = {};
   DAYS.forEach((d, di) => { for (let p=0; p<NP; p++){ const k = slotKey(di,p), v = tt[k]; if (!v || skip.has(k)) continue; let n = 1; while (p+n < NP && tt[slotKey(di,p+n)] === v){ skip.add(slotKey(di,p+n)); n++; } span[k] = n; } });
@@ -928,7 +930,7 @@ function renderGrid(){
       const key = unitKey(x), n = countOf(t, key), cls = n === x.hours ? "ok" : n > x.hours ? "over" : "";
       if (n > x.hours) warn.push(`${t.name}: ${x.ban ? banShort(x.ban) + " " : ""}${x.code} 배정 시수 ${x.hours}시간보다 ${n - x.hours}칸 더 입력됐어요.`);
       const active = brush[t.name] === key && t.items.length > 1;
-      return `<button type="button" class="pill ${cls}" data-brush="${ti}" data-key="${esc(key)}" style="border:${active ? "1.5px solid var(--ink)" : "0"};cursor:pointer" title="이 수업으로 채우기">${x.ban ? esc(banShort(x.ban)) + " " : ""}${esc(x.code)} ${n}/${esc(x.hours)}</button>`;
+      return `<button type="button" class="pill ${cls}" data-brush="${ti}" data-key="${esc(key)}" style="border:${active ? "1.5px solid var(--ink)" : "0"};cursor:pointer" title="${esc((x.ban ? x.ban + " · " : "") + x.code + " " + x.name)} — 눌러서 이 수업으로 채우기"><i class="pdot" style="background:${colorOf(t, key)}"></i>${esc(x.code)} ${n}/${esc(x.hours)}</button>`;
     }).join("");
     if (t.items.length && t.items.every(x => countOf(t, unitKey(x)) === x.hours)) done++;
     const stray = Object.values(ttOf(t.name)).filter(v => !t.items.some(x => unitKey(x) === v));
